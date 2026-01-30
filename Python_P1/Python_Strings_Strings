@@ -1,6 +1,3 @@
-a = "Hello, World!"
-print(a[1])
-
 for x in "banana":
   print(x)
 
@@ -20,3 +17,24 @@ print("expensive" not in txt)
 txt = "The best things in life are free!"
 if "expensive" not in txt:
   print("No, 'expensive' is NOT present.")
+
+# My example of python code
+a = "Dako trying to learn Python."
+print(len(a))
+
+for x in "Dako":
+    print(x)
+
+txt = "Python programming is fun!"
+print("fun" in txt)
+
+txt = "Python programming is fun!"
+if "fun" in txt:
+    print("Yes, 'fun' is present.")
+
+txt = "Python programming is fun!"
+print("boring" not in txt)  
+
+txt = "Python programming is fun!"
+if "boring" not in txt:
+    print("No, 'boring' is NOT present.")

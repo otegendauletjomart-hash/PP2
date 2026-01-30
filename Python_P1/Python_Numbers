@@ -22,3 +22,10 @@ print(type(c))
 import random
 
 print(random.randrange(1, 10)) 
+
+# My example of python code
+print(random.randrange(89, 112))
+print(random.randrange(9, 67))
+print(random.randrange(1, 10))
+print(random.randrange(13, 18))
+print(random.randrange(12, 63))
