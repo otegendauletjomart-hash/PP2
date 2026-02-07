@@ -27,4 +27,4 @@ weight = 70.5
 txt = f"My weight is {weight:.1f} kg."
 print(txt)  
 
-txt = f"My age next year will be {2027-2008}."
+txt = f"My age next year will be {2027-2008}."  
