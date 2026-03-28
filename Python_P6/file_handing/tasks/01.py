@@ -1,18 +1,6 @@
-import shutil
-import os
+file_name = "sample.txt"
 
-f = open("sample.txt")
-print(f.read())
-
-with open("sample.txt", "a") as f:
-    f.write("\nOh Hi")
-
-shutil.copy("sample.txt", "sample_copy.txt")
-
-file = "sample_copy.txt"
-
-if os.path.exists(file):
-    os.remove(file)
-    print("Deleted")
-else:
-    print("File not found")
+with open(file_name, "w") as f:
+    f.write("Hello\n")
+    f.write("Hi\n")
+    f.write("Privet\n")
