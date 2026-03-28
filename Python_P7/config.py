@@ -41,5 +41,4 @@ deleting_contacts_by_name = "DELETE FROM phonebook WHERE user_name = %s"
 deleting_contacts_by_number = "DELETE FROM phonebook WHERE phone_number = %s"
 deleting_contacts_by_id = "DELETE FROM phonebook WHERE id = %s"
 
-
-
+delete_all = "DROP TABLE phonebook"

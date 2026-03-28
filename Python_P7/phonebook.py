@@ -49,6 +49,8 @@ def main():
     try:
         with psycopg2.connect(**connection) as conn:
             with conn.cursor(cursor_factory=RealDictCursor) as cur:
+                cur.execute(config.create_phonebook_table)
+
                 contacts = csv_converter('contacts.csv')
                 execute_batch(cur, config.insert_contact, contacts)
 
@@ -90,6 +92,9 @@ def main():
                         cur.execute(config.deleting_contacts_by_number, (delete_value,))
                     elif query_type == "id":
                         cur.execute(config.deleting_contacts_by_id, (delete_value,))
+                delete_all = input("Do you wanna delete table? (y/n):").lower()
+                if delete_all == 'y':
+                    cur.execute(config.delete_all)
 
 
                 print("\nDone!")
