@@ -5,4 +5,4 @@ print(type(x))
 x = "123"
 y = int(x)
 
-print(y + 1)  # 124
+print(y + 1)
