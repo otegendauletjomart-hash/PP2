@@ -1,0 +1,62 @@
+import pygame
+import math
+import time
+
+pygame.init()
+
+WIDTH, HEIGHT = 400, 300
+screen = pygame.display.set_mode((WIDTH, HEIGHT))
+pygame.display.set_caption("Mickey's Clock")
+clock = pygame.time.Clock()
+
+CENTER = (WIDTH // 2, HEIGHT // 2)
+RADIUS = 100
+
+font = pygame.font.SysFont("arial", 22)
+
+hand1_img = pygame.image.load("images/mickey_hand.png").convert_alpha()
+hand2_img = pygame.transform.scale(hand1_img, (100, 40))
+
+def draw_hand(angle, length, width, color):
+    rad = math.radians(angle - 90)
+    end_x = CENTER[0] + math.cos(rad) * length
+    end_y = CENTER[1] + math.sin(rad) * length
+
+    pygame.draw.line(screen, color, CENTER, (end_x, end_y), width)
+
+
+running = True
+while running:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
+
+    screen.fill((18, 18, 25))
+
+    pygame.draw.circle(screen, (240, 240, 240), CENTER, RADIUS, 3)
+
+    for i in range(1, 13):
+        angle = math.radians(i * 30 - 90)
+
+        x = CENTER[0] + math.cos(angle) * (RADIUS - 20)
+        y = CENTER[1] + math.sin(angle) * (RADIUS - 20)
+
+        text_surf = font.render(str(i), True, (240, 240, 240))
+        text_rect = text_surf.get_rect(center=(x, y))
+        screen.blit(text_surf, text_rect)
+
+    t = time.localtime()
+    minutes = t.tm_min
+    seconds = t.tm_sec
+
+    draw_hand(minutes * 6, RADIUS - 30, 5, (255, 0, 0))
+    draw_hand(seconds * 6, RADIUS - 10, 2, (255, 0, 0))
+
+    
+
+    pygame.draw.circle(screen, (240, 240, 240), CENTER, 4)
+
+    pygame.display.flip()
+    clock.tick(60)
+
+pygame.quit()
