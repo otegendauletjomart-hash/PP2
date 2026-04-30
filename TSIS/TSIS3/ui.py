@@ -10,11 +10,9 @@ class MainMenu:
 
         self.settings = load_settings()
 
-        # меню пункты
         self.menu_items = ["PLAY", "LEADERBOARD", "SETTINGS", "QUIT"]
         self.index = 0
 
-    # ================= MAIN MENU =================
     def run(self):
         while True:
             self.screen.fill("gray")
@@ -22,7 +20,6 @@ class MainMenu:
             title = self.font.render("RACER GAME", True, "black")
             self.screen.blit(title, (100, 120))
 
-            # пункты меню
             for i, item in enumerate(self.menu_items):
                 color = "yellow" if i == self.index else "white"
                 text = self.small.render(item, True, color)
@@ -34,20 +31,17 @@ class MainMenu:
 
                 if event.type == pygame.KEYDOWN:
 
-                    # вверх / вниз
                     if event.key == pygame.K_UP:
                         self.index = (self.index - 1) % len(self.menu_items)
 
                     if event.key == pygame.K_DOWN:
                         self.index = (self.index + 1) % len(self.menu_items)
-
-                    # выбор
+                        
                     if event.key == pygame.K_RETURN:
                         return self.menu_items[self.index].lower()
 
             pygame.display.flip()
 
-    # ================= LEADERBOARD =================
     def show_leaderboard(self):
         data = load_leaderboard()
 
@@ -80,7 +74,6 @@ class MainMenu:
 
             pygame.display.flip()
 
-    # ================= SETTINGS =================
     def settings_screen(self):
         options = ["sound", "color"]
         index = 0
