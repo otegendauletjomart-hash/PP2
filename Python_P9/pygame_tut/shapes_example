@@ -1,6 +1,5 @@
 import pygame
 
-# фон (шахматка как у тебя было)
 def create_background(width, height):
     colors = [(255, 255, 255), (212, 212, 212)]
     background = pygame.Surface((width, height))
@@ -28,7 +27,6 @@ clock = pygame.time.Clock()
 
 background = create_background(WIDTH, HEIGHT)
 
-# DVD объект
 dvd = {
     "x": WIDTH // 2,
     "y": HEIGHT // 2,
@@ -44,21 +42,17 @@ while running:
         if event.type == pygame.QUIT:
             running = False
 
-    # движение
     dvd["x"] += dvd["vx"]
     dvd["y"] += dvd["vy"]
 
-    # отскок от стен
     if dvd["x"] <= 0 or dvd["x"] + dvd["w"] >= WIDTH:
         dvd["vx"] *= -1
 
     if dvd["y"] <= 0 or dvd["y"] + dvd["h"] >= HEIGHT:
         dvd["vy"] *= -1
 
-    # рисуем фон
     screen.blit(background, (0, 0))
 
-    # рисуем DVD "экран"
     pygame.draw.rect(
         screen,
         (0, 200, 255),
